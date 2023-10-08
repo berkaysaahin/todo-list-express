@@ -2,6 +2,7 @@ require("dotenv").config()
 const express = require('express')
 const app = express()
 const connectDB = require('./config/dbaseConn')
+const mongoose = require('mongoose')
 const PORT = process.env.PORT || 3500
 
 console.log(process.env.NODE_ENV)
@@ -12,7 +13,7 @@ app.get('/', (req, res) => {
     res.send('hi')
 })
 
-const userRouter = require("./routes/users")
+const userRouter = require("./routes/userRoutes")
 app.use("/users", userRouter )
 
 mongoose.connection.once('open', () => {
