@@ -57,6 +57,7 @@ const updateUser = asyncHandler(async (req, res) => {
     //allow updates to the original user
     if(duplicate && duplicate._id.toString() !== id) {
         return res.status(409).json({message: "Duplicate username"})
+        //409 is conflict
     }
 
     user.username = username
